@@ -1,0 +1,9 @@
+﻿  Source.cpp
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(14): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(17): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(61): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(65): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(151): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(166): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Никита\source\repos\Tsisa5\Source.cpp(167): warning C4018: <: несоответствие типов со знаком и без знака
+  Tsisa5.vcxproj -> C:\Users\Никита\source\repos\Tsisa5\Debug\Tsisa5.exe
