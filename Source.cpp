@@ -6,6 +6,7 @@
 
 
 using std::vector;
+using std::pair;
 using std::cout;
 using std::endl;
 
@@ -67,6 +68,16 @@ void normalize_restrictions_1(vector<double> &a) {
 }
 //-1
 
+//2
+double distance_monh(double x1, double y1, double x2, double y2) {
+	double x_dist = x1 - x2;
+	if (x_dist < 0) x_dist *= -1;
+	double y_dist = y1 - y2;
+	if (y_dist < 0) y_dist *= -1;
+	return x_dist + y_dist;
+}
+//-2
+
 //3
 double multiply(vector<double> a, vector<double> b) {
 	double result = 0;	
@@ -79,7 +90,7 @@ double multiply(vector<double> a, vector<double> b) {
 
 //4
 vector<double> cout_count_matrix4(vector<vector<double>> a,int k, bool mode) {
-	vector<double> hor_summ		{0,0,0,0};
+	vector<double> hor_summ	{0,0,0,0};
 	vector<double> hor_mult {1,1,1,1};
 	vector<double> ver_summ {0,0,0,0};
 	double hor_mult_summ = 0;
@@ -119,10 +130,9 @@ vector<double> cout_count_matrix4(vector<vector<double>> a,int k, bool mode) {
 		}
 		cout<<hor_summ[i]<<" |\t"<<result[i] << "\n";
 	}
-	cout <<"Otnoshenie sogl-ti: "<<index_onesound<< "\n\n";
+	cout <<"Relationship of accordance: "<<index_onesound<< "\n\n";
 	return result;
 }
-
 //-4
 
 
@@ -179,6 +189,46 @@ int main() {
 	if(i_max == 0) cout << "Nobody is good enough" << endl;
 	cout << "The answer is " << char('A' + i_max) << endl << endl <<endl;
 	
+	//2--------------------------------------------------------------------------------------------------------------------
+	cout << "NOW COUNTING WITH (2), PARETTO\n";
+	cout << "The main criteria are: physical power and character (2 and 4)\n";
+	vector<vector<double>> matrix2;
+	matrix2.resize(2);
+	int k = 0;
+	for (int i : {1,3}) {
+		matrix2[k].resize(4);
+		for (int j = 0; j < 4; j++) {
+			matrix2[k][j] = matrix3[i][j];
+		}
+		k++;
+	}
+
+	cout << "We have points:\n";
+	//double maxX_2 = 0;
+	//double maxY_2 = 0;
+	for (int i = 0; i < 4; i++) {
+		cout << char('A' + i) << "|\t (";
+		cout << matrix2[0][i] << ";" << matrix2[1][i] << ")\n";
+		//if (maxX_2 < matrix2[0][i]) maxX_2 = matrix2[0][i];
+		//if (maxY_2 < matrix2[1][i]) maxY_2 = matrix2[1][i];
+	}
+
+	cout << "The point of utopia: (" << 10 << ";" << 10 << ")\n\n";
+	vector<double> distances;
+	double distance_min = INFINITY;
+	distances.resize(4);
+	cout << "Distances:\n";
+	for (int i = 0; i < 4; i++){
+		distances[i] = distance_monh(10, 10, matrix2[0][i], matrix2[1][i]);
+		cout << char('A' + i) << " |  " << distances[i]<<endl;
+		if (distances[i] < distance_min) distance_min = distances[i];
+	}
+	cout << "Closest points:" << endl;
+	for (int i = 0; i < 4; i++)
+		if (distance_min == distances[i])
+			cout << char('A'+i)<<endl;
+	cout << endl;
+
 	//3--------------------------------------------------------------------------------------------------------------------
 	cout << "NOW COUNTING WITH (3), METHOD OF WEIGHT AND UNITE\n";
 	cout_matrix(matrix3);
